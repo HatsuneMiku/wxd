@@ -26,20 +26,20 @@ public import wx.Frame;
 		static extern (C) void wxMDIParentFrame_RegisterVirtual(IntPtr self, MDIParentFrame obj, Virtual_OnCreateClient onCreateClient);
 		static extern (C) IntPtr wxMDIParentFrame_OnCreateClient(IntPtr self);
 		static extern (C) bool   wxMDIParentFrame_Create(IntPtr self, IntPtr parent, int id, string title, ref Point pos, ref Size size, uint style, string name);
-	
+
 		static extern (C) IntPtr wxMDIParentFrame_GetActiveChild(IntPtr self);
 		//static extern (C) void   wxMDIParentFrame_SetActiveChild(IntPtr self, IntPtr pChildFrame);
-	
+
 		static extern (C) IntPtr wxMDIParentFrame_GetClientWindow(IntPtr self);
-	
+
 		static extern (C) void   wxMDIParentFrame_Cascade(IntPtr self);
 		static extern (C) void   wxMDIParentFrame_Tile(IntPtr self);
-	
+
 		static extern (C) void   wxMDIParentFrame_ArrangeIcons(IntPtr self);
-	
+
 		static extern (C) void   wxMDIParentFrame_ActivateNext(IntPtr self);
 		static extern (C) void   wxMDIParentFrame_ActivatePrevious(IntPtr self);
-		
+
 		static extern (C) void   wxMDIParentFrame_GetClientSize(IntPtr self, out int width, out int height);
 		//! \endcond
 
@@ -49,14 +49,14 @@ public import wx.Frame;
 	public class MDIParentFrame : Frame
 	{
 		enum { wxDEFAULT_MDI_FRAME_STYLE = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL }
-		
+
 		//-----------------------------------------------------------------------------
-		
+
 		public this(IntPtr wxobj)
 			{ super(wxobj);}
 
 		public this()
-		{ 
+		{
 			super(wxMDIParentFrame_ctor());
 			wxMDIParentFrame_RegisterVirtual(wxobj, this, &staticDoOnCreateClient);
 		}
@@ -64,33 +64,33 @@ public import wx.Frame;
 		public this(Window parent, int id, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_MDI_FRAME_STYLE, string name=wxFrameNameStr)
 		{
 			this();
-			
-			if (!Create(parent, id, title, pos, size, style, name)) 
+
+			if (!Create(parent, id, title, pos, size, style, name))
 			{
 				throw new InvalidOperationException("Could not create MDIParentFrame");
 			}
 		}
-		
+
 		//---------------------------------------------------------------------
 		// ctors with self created id
-		
+
 		public this(Window parent, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_MDI_FRAME_STYLE, string name=wxFrameNameStr)
 			{ this(parent, Window.UniqueID, title, pos, size, style, name);}
-		
+
 		//-----------------------------------------------------------------------------
 
 		public override bool Create(Window parent, int id, string title, ref Point pos, ref Size size, int style, string name)
 		{
 			return wxMDIParentFrame_Create(wxobj, wxObject.SafePtr(parent), id, title, pos, size, cast(uint)style, name);
 		}
-		
+
 		//-----------------------------------------------------------------------------
-		
+
 		static extern(C) private IntPtr staticDoOnCreateClient(MDIParentFrame obj)
 		{
 			return wxObject.SafePtr(obj.OnCreateClient());
 		}
-		
+
 		public /+virtual+/ MDIClientWindow OnCreateClient()
 		{
 			return cast(MDIClientWindow)FindObject(wxMDIParentFrame_OnCreateClient(wxobj), &MDIClientWindow.New);
@@ -149,7 +149,7 @@ public import wx.Frame;
 		}
 
 		//-----------------------------------------------------------------------------
-		
+
 		public /+virtual+/ void GetClientSize(out int width, out int height)
 		{
 			wxMDIParentFrame_GetClientSize(wxobj, width, height);
@@ -167,9 +167,9 @@ public import wx.Frame;
 		//-----------------------------------------------------------------------------
 
 	alias MDIChildFrame wxMDIChildFrame;
-	public class MDIChildFrame : Frame 
+	public class MDIChildFrame : Frame
 	{
-		public this(IntPtr wxobj) 
+		public this(IntPtr wxobj)
 			{ super(wxobj); }
 
 		public this()
@@ -182,21 +182,21 @@ public import wx.Frame;
 			{
 				throw new InvalidOperationException("Could not create MDIChildFrame");
 			}
-	    
+
 			EVT_ACTIVATE( &OnActivate );
 		}
-		
+
 		static wxObject New(IntPtr ptr) { return new MDIChildFrame(ptr); }
-		
+
 		//---------------------------------------------------------------------
 		// ctors with self created id
-		
+
 		public this(MDIParentFrame parent, string title, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style=wxDEFAULT_FRAME_STYLE, string name=wxFrameNameStr)
 			{ this(parent, Window.UniqueID, title, pos, size, style, name); }
-		
+
 		//-----------------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string title, ref Point pos, ref Size size, int style, string name)
+		override public bool Create(Window parent, int id, string title, ref Point pos, ref Size size, int style, string name)
 		{
 			bool ret = wxMDIChildFrame_Create(wxobj, wxObject.SafePtr(parent), id, title, pos, size, style, name);
 			version(__WXMAC__){
@@ -222,13 +222,13 @@ public import wx.Frame;
 		}
 
 		//-----------------------------------------------------------------------------
-	
+
 		public /+virtual+/ void OnActivate(Object sender, Event e)
 		{
 		}
-		
+
 		//-----------------------------------------------------------------------------
-		
+
 		public /+virtual+/ void Maximize()
 		{
 			wxMDIChildFrame_Maximize(wxobj, true);
@@ -239,13 +239,13 @@ public import wx.Frame;
 		static extern (C) IntPtr wxMDIClientWindow_ctor();
 		static extern (C) bool   wxMDIClientWindow_CreateClient(IntPtr self, IntPtr parent, uint style);
 		//! \endcond
-	
+
 		//-----------------------------------------------------------------------------
-	
+
 	alias MDIClientWindow wxMDIClientWindow;
 	public class MDIClientWindow : Window
 	{
-		public this(IntPtr wxobj) 
+		public this(IntPtr wxobj)
 			{ super(wxobj); }
 
 		public  this()
@@ -259,9 +259,9 @@ public import wx.Frame;
 				throw new InvalidOperationException("Could not create MDIClientWindow");
 			}
 		}
-		
+
 		static wxObject New(IntPtr ptr) { return new MDIClientWindow(ptr); }
-		
+
 		//-----------------------------------------------------------------------------
 
 		public bool CreateClient(MDIParentFrame parent, int style)

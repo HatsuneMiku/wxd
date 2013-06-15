@@ -34,7 +34,7 @@ public import wx.Event;
         static extern (C) void   wxKeyEvent_GetPosition(IntPtr self, ref Point pt);
         static extern (C) int    wxKeyEvent_GetX(IntPtr self);
         static extern (C) int    wxKeyEvent_GetY(IntPtr self);
-	
+
 	static extern (C) bool   wxKeyEvent_CmdDown(IntPtr self);
 		//! \endcond
 
@@ -43,7 +43,7 @@ public import wx.Event;
     alias KeyEvent wxKeyEvent;
     public class KeyEvent : Event
     {
-        public this(IntPtr wxobj) 
+        public this(IntPtr wxobj)
             { super(wxobj); }
 
         public this(EventType type = wxEVT_NULL)
@@ -65,7 +65,7 @@ public import wx.Event;
         {
             get { return (KeyCode)wxKeyEvent_GetKeyCode(wxobj); }
         }*/
-	
+
 	public int KeyCode() { return wxKeyEvent_GetKeyCode(wxobj); }
 
         public int RawKeyCode() { return wxKeyEvent_GetRawKeyCode(wxobj); }
@@ -93,10 +93,10 @@ public import wx.Event;
         public int Y() { return wxKeyEvent_GetY(wxobj); }
 
         //-----------------------------------------------------------------------------
-	
+
 	public bool CmdDown() { return wxKeyEvent_CmdDown(wxobj); }
 
-		private static Event New(IntPtr obj) { return new KeyEvent(obj); }
+		public static Event New(IntPtr obj) { return new KeyEvent(obj); }
 
 		static this()
 		{

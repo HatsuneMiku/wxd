@@ -16,7 +16,7 @@
 module wx.Event;
 public import wx.common;
 
-typedef int EventType;
+alias int EventType;
 
 		//! \cond EXTERN
 		static extern (C) EventType wxEvent_GetEventType(IntPtr self);
@@ -26,12 +26,12 @@ typedef int EventType;
 		static extern (C) void   wxEvent_Skip(IntPtr self, bool skip);
 		static extern (C) IntPtr wxEvent_GetEventObject(IntPtr self);
 		static extern (C) void   wxEvent_SetEventObject(IntPtr self, IntPtr object);
-	
+
 		//---------------------------------------------------------------------
 		static extern (C) EventType wxEvent_EVT_NULL();
 		static extern (C) EventType wxEvent_EVT_IDLE();
 		static extern (C) EventType wxEvent_EVT_SOCKET();
-	
+
 		static extern (C) EventType wxEvent_EVT_COMMAND_BUTTON_CLICKED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_CHECKBOX_CLICKED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_CHOICE_SELECTED();
@@ -97,7 +97,7 @@ typedef int EventType;
 		version(wxUSE_HOTKEY) {
 		static extern (C) EventType wxEvent_EVT_HOTKEY();
 		}
-		
+
 		// Set cursor event
 		static extern (C) EventType wxEvent_EVT_SET_CURSOR();
 
@@ -111,7 +111,7 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_SCROLL_THUMBTRACK();
 		static extern (C) EventType wxEvent_EVT_SCROLL_THUMBRELEASE();
 		static extern (C) EventType wxEvent_EVT_SCROLL_ENDSCROLL();
-		
+
 		// Scroll events from wxWindow
 		static extern (C) EventType wxEvent_EVT_SCROLLWIN_TOP();
 		static extern (C) EventType wxEvent_EVT_SCROLLWIN_BOTTOM();
@@ -172,15 +172,15 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_COMMAND_SET_FOCUS();
 		static extern (C) EventType wxEvent_EVT_COMMAND_KILL_FOCUS();
 		static extern (C) EventType wxEvent_EVT_COMMAND_ENTER();
-	
+
 		// Help events
 		static extern (C) EventType wxEvent_EVT_HELP();
 		static extern (C) EventType wxEvent_EVT_DETAILED_HELP();
-		
+
 		//togglebtn
 		static extern (C) EventType wxEvent_EVT_COMMAND_TOGGLEBUTTON_CLICKED();
 		static extern (C) EventType wxEvent_EVT_OBJECTDELETED();
-	
+
 		// calendar control
 		static extern (C) EventType wxEvent_EVT_CALENDAR_SEL_CHANGED();
 		static extern (C) EventType wxEvent_EVT_CALENDAR_DAY_CHANGED();
@@ -188,14 +188,14 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_CALENDAR_YEAR_CHANGED();
 		static extern (C) EventType wxEvent_EVT_CALENDAR_DOUBLECLICKED();
 		static extern (C) EventType wxEvent_EVT_CALENDAR_WEEKDAY_CLICKED();
-	
+
 		// find_replace
 		static extern (C) EventType wxEvent_EVT_COMMAND_FIND();
 		static extern (C) EventType wxEvent_EVT_COMMAND_FIND_NEXT();
 		static extern (C) EventType wxEvent_EVT_COMMAND_FIND_REPLACE();
 		static extern (C) EventType wxEvent_EVT_COMMAND_FIND_REPLACE_ALL();
 		static extern (C) EventType wxEvent_EVT_COMMAND_FIND_CLOSE();
-	
+
 		static extern (C) EventType wxEvent_EVT_COMMAND_TREE_BEGIN_DRAG();
 		static extern (C) EventType wxEvent_EVT_COMMAND_TREE_BEGIN_RDRAG();
 		static extern (C) EventType wxEvent_EVT_COMMAND_TREE_BEGIN_LABEL_EDIT();
@@ -214,7 +214,7 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_COMMAND_TREE_ITEM_RIGHT_CLICK();
 		static extern (C) EventType wxEvent_EVT_COMMAND_TREE_ITEM_MIDDLE_CLICK();
 		static extern (C) EventType wxEvent_EVT_COMMAND_TREE_END_DRAG();
-	
+
 		static extern (C) EventType wxEvent_EVT_COMMAND_LIST_BEGIN_DRAG();
 		static extern (C) EventType wxEvent_EVT_COMMAND_LIST_BEGIN_RDRAG();
 		static extern (C) EventType wxEvent_EVT_COMMAND_LIST_BEGIN_LABEL_EDIT();
@@ -237,17 +237,17 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_COMMAND_LIST_COL_DRAGGING();
 		static extern (C) EventType wxEvent_EVT_COMMAND_LIST_COL_END_DRAG();
 		static extern (C) EventType wxEvent_EVT_COMMAND_LIST_CACHE_HINT();
-	
+
 		static extern (C) EventType wxEvent_EVT_COMMAND_NOTEBOOK_PAGE_CHANGED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_NOTEBOOK_PAGE_CHANGING();
-	
+
 		static extern (C) EventType wxEvent_EVT_COMMAND_LISTBOOK_PAGE_CHANGED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_LISTBOOK_PAGE_CHANGING();
 
 version(__WXMSW__){
 		static extern (C) EventType wxEvent_EVT_COMMAND_TAB_SEL_CHANGED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_TAB_SEL_CHANGING();
-}        
+}
 		static extern (C) EventType wxEvent_EVT_GRID_CELL_LEFT_CLICK();
 		static extern (C) EventType wxEvent_EVT_GRID_CELL_RIGHT_CLICK();
 		static extern (C) EventType wxEvent_EVT_GRID_CELL_LEFT_DCLICK();
@@ -264,16 +264,16 @@ version(__WXMSW__){
 		static extern (C) EventType wxEvent_EVT_GRID_EDITOR_SHOWN();
 		static extern (C) EventType wxEvent_EVT_GRID_EDITOR_HIDDEN();
 		static extern (C) EventType wxEvent_EVT_GRID_EDITOR_CREATED();
-		
+
 		static extern (C) EventType wxEvent_EVT_SASH_DRAGGED();
-		
+
 		//layoutwin
 		static extern (C) EventType wxEvent_EVT_QUERY_LAYOUT_INFO();
 		static extern (C) EventType wxEvent_EVT_CALCULATE_LAYOUT();
-	
+
 		//! \endcond
 		//---------------------------------------------------------------------
-	
+
 	alias Event wxEvent;
 	public class Event : wxObject
 	{
@@ -300,10 +300,10 @@ version(__WXMSW__){
 		public static /*readonly*/ EventType wxEVT_COMMAND_TOOL_RCLICKED;
 		public static /*readonly*/ EventType wxEVT_COMMAND_TOOL_ENTER;
 		public static /*readonly*/ EventType wxEVT_COMMAND_SPINCTRL_UPDATED;
-		
+
 		public static /*readonly*/ EventType wxEVT_SOCKET;
 		public static /*readonly*/ EventType wxEVT_TIMER ;
-		
+
 		public static /*readonly*/ EventType wxEVT_LEFT_DOWN;
 		public static /*readonly*/ EventType wxEVT_LEFT_UP;
 		public static /*readonly*/ EventType wxEVT_MIDDLE_DOWN;
@@ -320,7 +320,7 @@ version(__WXMSW__){
 		public static /*readonly*/ EventType wxEVT_KILL_FOCUS;
 		public static /*readonly*/ EventType wxEVT_CHILD_FOCUS;
 		public static /*readonly*/ EventType wxEVT_MOUSEWHEEL;
-		
+
 		public static /*readonly*/ EventType wxEVT_NC_LEFT_DOWN;
 		public static /*readonly*/ EventType wxEVT_NC_LEFT_UP;
 		public static /*readonly*/ EventType wxEVT_NC_MIDDLE_DOWN;
@@ -333,7 +333,7 @@ version(__WXMSW__){
 		public static /*readonly*/ EventType wxEVT_NC_LEFT_DCLICK;
 		public static /*readonly*/ EventType wxEVT_NC_MIDDLE_DCLICK;
 		public static /*readonly*/ EventType wxEVT_NC_RIGHT_DCLICK;
-		
+
 		public static /*readonly*/ EventType wxEVT_CHAR;
 		public static /*readonly*/ EventType wxEVT_CHAR_HOOK;
 		public static /*readonly*/ EventType wxEVT_NAVIGATION_KEY;
@@ -342,9 +342,9 @@ version(__WXMSW__){
 		version(wxUSE_HOTKEY) {
 		public static /*readonly*/ EventType wxEVT_HOTKEY;
 		}
-		
+
 		public static /*readonly*/ EventType wxEVT_SET_CURSOR;
-		
+
 		public static /*readonly*/ EventType wxEVT_SCROLL_TOP;
 		public static /*readonly*/ EventType wxEVT_SCROLL_BOTTOM;
 		public static /*readonly*/ EventType wxEVT_SCROLL_LINEUP;
@@ -413,20 +413,20 @@ version(__WXMSW__){
 		public static /*readonly*/ EventType wxEVT_DETAILED_HELP;
 		public static /*readonly*/ EventType wxEVT_COMMAND_TOGGLEBUTTON_CLICKED;
 		public static /*readonly*/ EventType wxEVT_OBJECTDELETED;
-	
+
 		public static /*readonly*/ EventType wxEVT_CALENDAR_SEL_CHANGED;
 		public static /*readonly*/ EventType wxEVT_CALENDAR_DAY_CHANGED;
 		public static /*readonly*/ EventType wxEVT_CALENDAR_MONTH_CHANGED;
 		public static /*readonly*/ EventType wxEVT_CALENDAR_YEAR_CHANGED;
 		public static /*readonly*/ EventType wxEVT_CALENDAR_DOUBLECLICKED;
 		public static /*readonly*/ EventType wxEVT_CALENDAR_WEEKDAY_CLICKED;
-	
+
 		public static /*readonly*/ EventType wxEVT_COMMAND_FIND;
 		public static /*readonly*/ EventType wxEVT_COMMAND_FIND_NEXT;
 		public static /*readonly*/ EventType wxEVT_COMMAND_FIND_REPLACE;
 		public static /*readonly*/ EventType wxEVT_COMMAND_FIND_REPLACE_ALL;
 		public static /*readonly*/ EventType wxEVT_COMMAND_FIND_CLOSE;
-	
+
 		public static /*readonly*/ EventType wxEVT_COMMAND_TREE_BEGIN_DRAG;
 		public static /*readonly*/ EventType wxEVT_COMMAND_TREE_BEGIN_RDRAG;
 		public static /*readonly*/ EventType wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT;
@@ -445,7 +445,7 @@ version(__WXMSW__){
 		public static /*readonly*/ EventType wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK;
 		public static /*readonly*/ EventType wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK;
 		public static /*readonly*/ EventType wxEVT_COMMAND_TREE_END_DRAG;
-	
+
 		public static /*readonly*/ EventType wxEVT_COMMAND_LIST_BEGIN_DRAG;
 		public static /*readonly*/ EventType wxEVT_COMMAND_LIST_BEGIN_RDRAG;
 		public static /*readonly*/ EventType wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT;
@@ -468,10 +468,10 @@ version(__WXMSW__){
 		public static /*readonly*/ EventType wxEVT_COMMAND_LIST_COL_DRAGGING;
 		public static /*readonly*/ EventType wxEVT_COMMAND_LIST_COL_END_DRAG;
 		public static /*readonly*/ EventType wxEVT_COMMAND_LIST_CACHE_HINT;
-	
+
 		public static /*readonly*/ EventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED;
 		public static /*readonly*/ EventType wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING;
-	
+
 		public static /*readonly*/ EventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED;
 		public static /*readonly*/ EventType wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING;
 
@@ -495,16 +495,16 @@ version(__WXMSW__){
 		public static /*readonly*/ EventType wxEVT_GRID_EDITOR_SHOWN;
 		public static /*readonly*/ EventType wxEVT_GRID_EDITOR_HIDDEN;
 		public static /*readonly*/ EventType wxEVT_GRID_EDITOR_CREATED;
-		
+
 		public static /*readonly*/ EventType wxEVT_SASH_DRAGGED;
-		
+
 		public static /*readonly*/ EventType wxEVT_QUERY_LAYOUT_INFO;
 		public static /*readonly*/ EventType wxEVT_CALCULATE_LAYOUT;
 
 		static this()
 		{
 			wxEVT_NULL = wxEvent_EVT_NULL();
-		
+
 			wxEVT_COMMAND_BUTTON_CLICKED = wxEvent_EVT_COMMAND_BUTTON_CLICKED();
 			wxEVT_COMMAND_CHECKBOX_CLICKED = wxEvent_EVT_COMMAND_CHECKBOX_CLICKED();
 			wxEVT_COMMAND_CHOICE_SELECTED = wxEvent_EVT_COMMAND_CHOICE_SELECTED();
@@ -531,7 +531,7 @@ version(__WXMSW__){
 
 			wxEVT_SOCKET = wxEvent_EVT_SOCKET();
 			wxEVT_TIMER  = wxEvent_EVT_TIMER ();
-			
+
 			wxEVT_LEFT_DOWN = wxEvent_EVT_LEFT_DOWN();
 			wxEVT_LEFT_UP = wxEvent_EVT_LEFT_UP();
 			wxEVT_MIDDLE_DOWN = wxEvent_EVT_MIDDLE_DOWN();
@@ -632,7 +632,7 @@ version(__WXMSW__){
 			wxEVT_INIT_DIALOG = wxEvent_EVT_INIT_DIALOG();
 			wxEVT_IDLE = wxEvent_EVT_IDLE();
 			wxEVT_UPDATE_UI = wxEvent_EVT_UPDATE_UI();
-			
+
 			wxEVT_COMMAND_LEFT_CLICK = wxEvent_EVT_COMMAND_LEFT_CLICK();
 			wxEVT_COMMAND_LEFT_DCLICK = wxEvent_EVT_COMMAND_LEFT_DCLICK();
 			wxEVT_COMMAND_RIGHT_CLICK = wxEvent_EVT_COMMAND_RIGHT_CLICK();
@@ -640,20 +640,20 @@ version(__WXMSW__){
 			wxEVT_COMMAND_SET_FOCUS = wxEvent_EVT_COMMAND_SET_FOCUS();
 			wxEVT_COMMAND_KILL_FOCUS = wxEvent_EVT_COMMAND_KILL_FOCUS();
 			wxEVT_COMMAND_ENTER = wxEvent_EVT_COMMAND_ENTER();
-			
+
 			wxEVT_HELP = wxEvent_EVT_HELP();
 			wxEVT_DETAILED_HELP = wxEvent_EVT_DETAILED_HELP();
 
 			wxEVT_COMMAND_TOGGLEBUTTON_CLICKED = wxEvent_EVT_COMMAND_TOGGLEBUTTON_CLICKED();
 
 			wxEVT_OBJECTDELETED = wxEvent_EVT_OBJECTDELETED();
-	
-	
-	
-	
 
-		
-		
+
+
+
+
+
+
 		}
 
 		//---------------------------------------------------------------------
@@ -661,10 +661,10 @@ version(__WXMSW__){
 		alias static Event function(IntPtr wxobj) newfunc;
 
 		protected static newfunc[EventType] funcmap;
-	
+
 		//---------------------------------------------------------------------
 		private static Event New(IntPtr obj);
-	
+
 		//---------------------------------------------------------------------
 
 		public static void AddEventType(EventType evt, newfunc func)
@@ -674,7 +674,7 @@ version(__WXMSW__){
 
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
+		public this(IntPtr wxobj)
 			{ super(wxobj); }
 
 		//---------------------------------------------------------------------
@@ -708,8 +708,8 @@ version(__WXMSW__){
 		//---------------------------------------------------------------------
 
 		public void Skip()
-		{ 
-			Skip(true); 
+		{
+			Skip(true);
 		}
 
 		public void Skip(bool skip)

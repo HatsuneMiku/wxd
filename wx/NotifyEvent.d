@@ -27,7 +27,7 @@ public import wx.CommandEvent;
 	public class NotifyEvent : CommandEvent
 	{
 
-		public this(IntPtr wxobj) 
+		public this(IntPtr wxobj)
 			{ super(wxobj); }
 
 		public this(EventType commandtype = wxEVT_NULL,int winid = 0)
@@ -39,5 +39,5 @@ public import wx.CommandEvent;
 
 		public void Veto() { wxNotifyEvent_Veto(wxobj); }
 		public void Allow() { wxNotifyEvent_Veto(wxobj); }
-		public void IsAllowed() { return wxNotifyEvent_IsAllowed(wxobj); }
+		public bool IsAllowed() { return wxNotifyEvent_IsAllowed(wxobj); }
 	}

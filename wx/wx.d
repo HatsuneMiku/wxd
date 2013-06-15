@@ -139,7 +139,7 @@ public import wx.TipWindow;
 public import wx.ToggleButton;
 public import wx.ToolBar;
 public import wx.ToolTip;
-public import wx.TreeCtrl;
+//public import wx.TreeCtrl;
 public import wx.UpdateUIEvent;
 public import wx.Utils;
 public import wx.VLBox;

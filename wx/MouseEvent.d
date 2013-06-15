@@ -62,7 +62,7 @@ public import wx.DC;
     alias MouseEvent wxMouseEvent;
     public class MouseEvent : Event
     {
-		public this(IntPtr wxobj) 
+		public this(IntPtr wxobj)
             { super(wxobj); }
 
         public this(EventType mouseType)
@@ -71,7 +71,7 @@ public import wx.DC;
 		//----------------------------------------------------------------------------
 
         public bool IsButton() { return wxMouseEvent_IsButton(wxobj); }
-	
+
 	//----------------------------------------------------------------------------
 
         public bool ButtonDown()
@@ -79,14 +79,14 @@ public import wx.DC;
             //get { return wxMouseEvent_ButtonDown(wxobj); }
 	    return ButtonDown(MouseButton.wxMOUSE_BTN_ANY);
         }
-	
+
 	public bool ButtonDown(MouseButton but)
 	{
 		return wxMouseEvent_ButtonDown2(wxobj, cast(int)but);
 	}
-	
+
 	//----------------------------------------------------------------------------
-	
+
 	public bool ButtonDClick()
 	{
 		return ButtonDClick(MouseButton.wxMOUSE_BTN_ANY);
@@ -96,9 +96,9 @@ public import wx.DC;
         {
             return wxMouseEvent_ButtonDClick(wxobj, cast(int)but);
         }
-	
+
 	//----------------------------------------------------------------------------
-	
+
 	public bool ButtonUp()
 	{
 		return ButtonUp(MouseButton.wxMOUSE_BTN_ANY);
@@ -108,7 +108,7 @@ public import wx.DC;
         {
             return wxMouseEvent_ButtonUp(wxobj, cast(int)but);
         }
-	
+
 	//----------------------------------------------------------------------------
 
         public bool Button(int but)
@@ -180,7 +180,7 @@ public import wx.DC;
 
 		//----------------------------------------------------------------------------
 
-        public Point Position() { 
+        public Point Position() {
                 Point pos;
                 wxMouseEvent_GetPosition(wxobj, pos);
                 return pos;
@@ -204,7 +204,7 @@ public import wx.DC;
         public bool IsPageScroll() { return wxMouseEvent_IsPageScroll(wxobj); }
 
 		//----------------------------------------------------------------------------
-		private static Event New(IntPtr obj) { return new MouseEvent(obj); }
+		public static Event New(IntPtr obj) { return new MouseEvent(obj); }
 
 		static this()
 		{
